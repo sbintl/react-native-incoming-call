@@ -38,7 +38,11 @@ public class UnlockScreenActivity extends AppCompatActivity implements UnlockScr
     private static final String TAG = "MessagingService";
     private TextView tvName;
     private TextView tvInfo;
+    private TextView tvAccept;
+    private TextView tvDecline;
     private ImageView ivAvatar;
+    private ImageView ivAcceptIcon;
+    private ImageView ivRejectIcon;
     private Integer timeout = 0;
     private String uuid = "";
     static boolean active = false;
@@ -82,6 +86,10 @@ public class UnlockScreenActivity extends AppCompatActivity implements UnlockScr
         tvName = findViewById(R.id.tvName);
         tvInfo = findViewById(R.id.tvInfo);
         ivAvatar = findViewById(R.id.ivAvatar);
+        ivAcceptIcon = findViewById(R.id.ivAcceptCall);
+        tvAccept = findViewById(R.id.tvAccept);
+        ivRejectIcon = findViewById(R.id.ivDeclineCall);
+        tvDecline = findViewById(R.id.tvDecline);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -100,6 +108,26 @@ public class UnlockScreenActivity extends AppCompatActivity implements UnlockScr
                 String avatar = bundle.getString("avatar");
                 if (avatar != null) {
                     Picasso.get().load(avatar).transform(new CircleTransform()).into(ivAvatar);
+                }
+            }
+            if (bundle.containsKey("accept")) {
+                String accept = bundle.getString("accept");
+                tvAccept.setText(accept);
+            }
+            if (bundle.containsKey("reject")) {
+                String reject = bundle.getString("reject");
+                tvDecline.setText(reject);
+            }
+            if (bundle.containsKey("acceptIcon")) {
+                String acceptIcon = bundle.getString("acceptIcon");
+                if (acceptIcon != null) {
+                    Picasso.get().load(acceptIcon).transform(new CircleTransform()).into(ivAcceptIcon);
+                }
+            }
+            if (bundle.containsKey("rejectIcon")) {
+                String rejectIcon = bundle.getString("rejectIcon");
+                if (rejectIcon != null) {
+                    Picasso.get().load(rejectIcon).transform(new CircleTransform()).into(ivRejectIcon);
                 }
             }
             if (bundle.containsKey("timeout")) {

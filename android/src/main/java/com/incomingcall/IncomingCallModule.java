@@ -34,7 +34,7 @@ public class IncomingCallModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void display(String uuid, String name, String avatar, String info, int timeout) {
+    public void display(String uuid, String name, String avatar, String info, int timeout, String accept, String acceptIcon, String reject, String rejectIcon) {
         if (UnlockScreenActivity.active) {
             return;
         }
@@ -45,6 +45,10 @@ public class IncomingCallModule extends ReactContextBaseJavaModule {
             bundle.putString("avatar", avatar);
             bundle.putString("info", info);
             bundle.putInt("timeout", timeout);
+            bundle.putString("accept", accept);
+            bundle.putString("acceptIcon", acceptIcon);
+            bundle.putString("reject", reject);
+            bundle.putString("rejectIcon", rejectIcon);
             Intent i = new Intent(reactContext, UnlockScreenActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             i.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED +
