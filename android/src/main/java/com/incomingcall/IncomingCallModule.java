@@ -117,4 +117,12 @@ public class IncomingCallModule extends ReactContextBaseJavaModule {
 
         promise.resolve(null);
     }
+
+    @ReactMethod
+    public void dismiss(){
+        UnlockScreenActivity.v.cancel();
+        UnlockScreenActivity.player.stop();
+        UnlockScreenActivity.player.prepareAsync();
+        UnlockScreenActivity.fa.finish();
+    }
 }

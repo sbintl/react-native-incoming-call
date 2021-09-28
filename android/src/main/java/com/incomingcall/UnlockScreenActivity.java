@@ -46,10 +46,10 @@ public class UnlockScreenActivity extends AppCompatActivity implements UnlockScr
     private Integer timeout = 0;
     private String uuid = "";
     static boolean active = false;
-    private static Vibrator v = (Vibrator) IncomingCallModule.reactContext.getSystemService(Context.VIBRATOR_SERVICE);
+    public static Vibrator v = (Vibrator) IncomingCallModule.reactContext.getSystemService(Context.VIBRATOR_SERVICE);
     private long[] pattern = {0, 1000, 800};
-    private static MediaPlayer player = MediaPlayer.create(IncomingCallModule.reactContext, Settings.System.DEFAULT_RINGTONE_URI);
-    private static Activity fa;
+    public static MediaPlayer player = MediaPlayer.create(IncomingCallModule.reactContext, Settings.System.DEFAULT_RINGTONE_URI);
+    public static Activity fa;
     private Timer timer;
 
 
