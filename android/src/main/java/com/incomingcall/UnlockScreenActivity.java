@@ -48,7 +48,8 @@ public class UnlockScreenActivity extends AppCompatActivity implements UnlockScr
     static boolean active = false;
     public static Vibrator v = (Vibrator) IncomingCallModule.reactContext.getSystemService(Context.VIBRATOR_SERVICE);
     private long[] pattern = {0, 1000, 800};
-    public static MediaPlayer player = MediaPlayer.create(IncomingCallModule.reactContext, Settings.System.DEFAULT_RINGTONE_URI);
+    private static int ringtone = R.raw.call_ringtone;
+    public static MediaPlayer player = MediaPlayer.create(IncomingCallModule.reactContext, ringtone);
     public static Activity fa;
     private Timer timer;
 
@@ -141,6 +142,7 @@ public class UnlockScreenActivity extends AppCompatActivity implements UnlockScr
 
         v.vibrate(pattern, 0);
         player.start();
+        player.setLooping(true);
 
         AnimateImage acceptCallBtn = findViewById(R.id.ivAcceptCall);
         acceptCallBtn.setOnClickListener(new View.OnClickListener() {
