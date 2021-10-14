@@ -210,7 +210,7 @@ public class UnlockScreenActivity extends AppCompatActivity implements UnlockScr
           }
         }
 
-        sendEvent("answerCall", params);
+        sendEvent("callAnswer", params);
         finish();
     }
 
@@ -225,7 +225,7 @@ public class UnlockScreenActivity extends AppCompatActivity implements UnlockScr
             params.putBoolean("isHeadless", true);
         }
 
-        sendEvent("endCall", params);
+        sendEvent("callEnd", params);
 
         finish();
     }
